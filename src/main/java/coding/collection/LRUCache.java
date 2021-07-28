@@ -63,10 +63,9 @@ public class LRUCache<K, V> implements Iterable<K>{
         System.out.println(
                 "leave <-"+
                 StreamSupport.stream(lru.spliterator(), false)
-                        .map(Object::toString)
+                        .map(o -> o.toString())
                 .collect(Collectors.joining("<-"))
         );
-
     }
 
 

@@ -61,26 +61,31 @@ public class BasicExamples {
     public void test_parallel() throws ExecutionException, InterruptedException {
 
         var r = new Random();
-        var list = IntStream.range(0, 1_000_000)
-                .map(x -> r.nextInt(10_000_000))
-                .boxed()
-                .collect(Collectors.toList());
+         IntStream.range(0, 1000).forEach(System.out::println);
+               // .collect(Collectors.toList());
 
+/*
         var t0 = System.currentTimeMillis();
         System.out.println(list.stream().max(Comparator.comparingInt(x -> x)));
         System.out.println("time:" + (System.currentTimeMillis() - t0));
 
+        var t2 = System.currentTimeMillis();
+        System.out.println(list.stream().max(Comparator.comparingInt(x -> x)));
+        System.out.println("time:" + (System.currentTimeMillis() - t2));
+
+*/
+
         // 1000
         var pool = new ForkJoinPool(2);
         var t1 = System.currentTimeMillis();
-        var max = pool.submit(() -> list.parallelStream().max(Comparator.naturalOrder())).get();
+        //var max = pool.submit(() -> list.parallelStream().max(Comparator.naturalOrder())).get();
 
-//        list.stream().parallel().max((a , b) -> a -b);
+        //var max = list.stream().parallel().max((a , b) -> a -b);
 
         // 15
         // Spliter 1024 -> Thread0 1024 -> Thread1
 
-        System.out.println("time:" + (System.currentTimeMillis() - t1) + ",max:" + max);
+       // System.out.println("time:" + (System.currentTimeMillis() - t1) + ",max:" + max);
     }
 
 

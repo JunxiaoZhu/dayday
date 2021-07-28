@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HashSetvsTreeSet  {
 
@@ -14,10 +15,9 @@ public class HashSetvsTreeSet  {
         hashSet.add(7);
         hashSet.add(2);
         hashSet.add(81);
-
+        Stream<Integer> stream = hashSet.stream();
 
         System.out.println(hashSet.stream().map(x -> x.toString()).collect(Collectors.joining(",")));
-
 
         var treeSet = new TreeSet<Integer>(){
             {

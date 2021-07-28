@@ -24,6 +24,16 @@ import java.util.concurrent.Future;
 public class BufferExamples {
 
     @Test
+    public void random(){
+        Random ran1 = new Random(10);
+        System.out.println("使用种子为10的Random对象生成[0,10)内随机整数序列: ");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(ran1.nextInt(10) + " ");
+        }
+    }
+
+
+    @Test
     public void gen() throws IOException {
         Random r = new Random();
         var fileName = "word";

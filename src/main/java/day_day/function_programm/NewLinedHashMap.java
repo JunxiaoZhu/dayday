@@ -1,4 +1,4 @@
-package datatype;
+package day_day.function_programm;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,9 +11,14 @@ public class NewLinedHashMap<K,V> extends LinkedHashMap<K,V> {
 
     private static final Integer sizeMax = 5;
 
+    /**
+     * 第一种方式实现LRU
+     * @param eldest
+     * @return
+     */
     @Override
     public  boolean removeEldestEntry(Map.Entry<K,V> eldest) {
-        return size() > sizeMax;
+        return false;                         //返回true的时候移除最久没有使用的元素
     }
 
     /**
@@ -23,6 +28,18 @@ public class NewLinedHashMap<K,V> extends LinkedHashMap<K,V> {
      */
     NewLinedHashMap(int i,float fl,boolean bool){
         super(i,fl,bool);
+    }
+
+    public static void main(String[] args) {
+        NewLinedHashMap lru = new NewLinedHashMap(16,0.75f,true);
+        lru.put("A1","1");
+        lru.put("A2","2");
+        lru.put("A3","3");
+        lru.put("A4","4");
+        lru.put("A5","5");
+        lru.put("A6","6");
+        System.out.println(lru);
+
     }
 
 }
